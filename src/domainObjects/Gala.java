@@ -70,7 +70,18 @@ public abstract class Gala {
 		this.organisersName = organisersName;
 	}
 
+	@Override
+	public String toString() {
+		return "Gala [id=" + id + ", name=" + name + ", date=" + date
+				+ ", city=" + city + ", isNational=" + isNational
+				+ ", payment=" + payment + ", organisersName=" + organisersName
+				+ "]";
+	}
+
+
 	public int convertTime(int minutes, int seconds, int splitSeconds){
 		return minutes*60 + seconds + splitSeconds/100;
 	}
+	
+	
 }
