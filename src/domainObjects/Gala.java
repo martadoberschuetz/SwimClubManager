@@ -13,7 +13,6 @@ public abstract class Gala {
 	private String organisersName;
 	
 	
-	
 	public Gala(String id, String name, Date date, String city,
 			boolean isNational, int payment, String organisersName) {
 		super();
