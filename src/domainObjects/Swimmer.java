@@ -20,8 +20,8 @@ public class Swimmer {
 	private String email;
 	private String medicalConditions;
 	private String medication;
-	private String nextOfKinName;
-	private int nextOfKinPhoneNumber;
+	//private String nextOfKinName;
+	//private int nextOfKinPhoneNumber;
 	private String swimClubName;
 	private String level; // MD 24/08/2014 as in: Junior, Senior, Masters -> not needed yet?
 
@@ -141,5 +141,19 @@ public class Swimmer {
 	public void setLevel(String level) {
 		this.level = level;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Swimmer [swimmerID=" + swimmerID + ", forename=" + forename
+				+ ", surname=" + surname + ", dateOfBirth=" + dateOfBirth
+				+ ", age=" + age + ", gender=" + gender + ", status=" + status
+				+ ", phoneNumber=" + phoneNumber + ", email=" + email
+				+ ", medicalConditions=" + medicalConditions + ", medication="
+				+ medication + ", nextOfKinName=" + nextOfKinName
+				+ ", nextOfKinPhoneNumber=" + nextOfKinPhoneNumber
+				+ ", swimClubName=" + swimClubName + ", level=" + level + "]";
+	}
+	
 		
 }
