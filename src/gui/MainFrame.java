@@ -3,10 +3,12 @@ package gui;
 
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+
 
 
 //import javax.swing.JComboBox;
@@ -27,9 +29,12 @@ public class MainFrame extends JFrame{
 	JMenu competitionMenu;
 	JMenu adminMenu;
 	
+	private Font font;
+	
 	public MainFrame(){
 		createMenu();
 	}
+	
 	
 	public void createMenu(){
 		
@@ -43,15 +48,21 @@ public class MainFrame extends JFrame{
 		container = getContentPane();
 		container.setLayout(new FlowLayout());
 		
+		font = new Font("Verdana", Font.BOLD, 16);
+		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		swimmerMenu = new JMenu("Swimmers");
+		swimmerMenu.setFont(font);
 		menuBar.add(swimmerMenu);
 		galaMenu = new JMenu("Galas");
+		galaMenu.setFont(font);
 		menuBar.add(galaMenu);
 		competitionMenu = new JMenu("Competition");
+		competitionMenu.setFont(font);
 		menuBar.add(competitionMenu);
-		adminMenu = new JMenu("Admin");
+		adminMenu = new JMenu("About");
+		adminMenu.setFont(font);
 		menuBar.add(adminMenu);
 		
 		JMenuItem item;
@@ -109,13 +120,12 @@ public class MainFrame extends JFrame{
 		EnterAGalaHandler enterAGalaHandler = new EnterAGalaHandler();
 		item.addActionListener(enterAGalaHandler);
 		
-		item = new JMenuItem("Load");
+		item = new JMenuItem("About the project");
 		adminMenu.add(item);
 		LoadDataHandler loadDataHandler = new LoadDataHandler();
 		item.addActionListener(loadDataHandler);
 		
-
-		item = new JMenuItem("Save");
+		item = new JMenuItem("Contact us");
 		adminMenu.add(item);
 		SaveDataHandler saveDataHandler = new SaveDataHandler();
 		item.addActionListener(saveDataHandler);
@@ -128,7 +138,6 @@ public class MainFrame extends JFrame{
 			
 			RegisterSwimmerFrame swimmerRegistrationFrame = new RegisterSwimmerFrame();
 			swimmerRegistrationFrame.setVisible(true);
-			
 		}
 	}
 	
@@ -141,7 +150,6 @@ public class MainFrame extends JFrame{
 			
 			PerformDatabaseOperations viewSwimmers = new PerformDatabaseOperations();
 			viewSwimmers.viewSwimmers();
-			
 		}
 	}
 	
@@ -154,9 +162,6 @@ public class MainFrame extends JFrame{
 			newFrame.setVisible(true);
 			PerformDatabaseOperations loadSwimmerDetails = new PerformDatabaseOperations();
 			loadSwimmerDetails.retrieveSwimmerFromDatabase();
-			
-			
-			
 		}
 	}
 	
@@ -167,7 +172,6 @@ public class MainFrame extends JFrame{
 
 			PerformDatabaseOperations deactivateSwimmer = new PerformDatabaseOperations();
 			deactivateSwimmer.deleteSwimmerFromDatabase();
-			
 		}
 	}
 	
@@ -178,22 +182,15 @@ public class MainFrame extends JFrame{
 
 			GalaFrame galaFrame = new GalaFrame();
 			galaFrame.setVisible(true);
-			
-			
 		}
-		
-		
 	}
 	
 	class AmendGalaHandler implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-		
-			
+	
 		}
-		
-		
 	}
 	
 	class CancelGalaHandler implements ActionListener{
@@ -298,9 +295,7 @@ public class MainFrame extends JFrame{
 			for (InternationalGala x: GalaFrame.internationalGalaArrayList){
 				JOptionPane.showMessageDialog(null, x);
 			}*/
-			
 		}
-		
 	}
 	
 	class ViewQualifyingSwimmersHandler implements ActionListener{
@@ -309,16 +304,13 @@ public class MainFrame extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			
 			
-			
 		}
-		
 	}
 	
 	class DoIQualifyHandler implements ActionListener{
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			
 		}
 	}
@@ -327,7 +319,6 @@ public class MainFrame extends JFrame{
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			
 		}
 	}
@@ -336,7 +327,6 @@ public class MainFrame extends JFrame{
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			
 		}
 	}
@@ -345,11 +335,7 @@ public class MainFrame extends JFrame{
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			
 		}
-		
 	}
-	
 }
-					

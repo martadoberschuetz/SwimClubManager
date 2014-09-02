@@ -1,7 +1,5 @@
 package gui;
 
-
-//import GUI and event handling packages
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Date;
@@ -17,7 +15,6 @@ import enumerations.*;
 
 public class RegisterSwimmerFrame extends JFrame{
 	
-	// all labels
 	private JLabel enterDetailsLabel;
 	private JLabel forenameLabel;
 	private JLabel surnameLabel;
@@ -37,8 +34,6 @@ public class RegisterSwimmerFrame extends JFrame{
 	private JLabel statusLabel;
 	private JLabel swimmerLevelLabel;
 	
-	
-	// textfields and comboboxes
 	private JTextField forenameTextField;
 	private JTextField surnameTextField;
 	private JDateChooser dateOfBirthChosen;
@@ -75,8 +70,7 @@ public class RegisterSwimmerFrame extends JFrame{
 	
 	public RegisterSwimmerFrame(){
 		
-		createRegisterSwimmerFrame();
-		
+		createRegisterSwimmerFrame();		
 	}
 	
 	public void createRegisterSwimmerFrame(){
@@ -297,9 +291,7 @@ public class RegisterSwimmerFrame extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			
-		
-			
+						
 			// get text from all the fields in the form
 			String forename = forenameTextField.getText();
 			String surname = surnameTextField.getText();
