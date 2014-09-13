@@ -6,15 +6,16 @@ import enumerations.Gender;
 import enumerations.Status;
 
 
-public class Swimmer extends Member{
+public class Swimmer extends Member {
 
-	private int swimmerID;
+	private String swimmerID;
+	public static int numericId = 0;
 	private String medicalConditions;
 	private String medication;
 	private String swimClubName;
 	private String level; // MD 24/08/2014 as in: Junior, Senior, Masters -> not needed yet?
 
-	
+
 	public Swimmer(
 			String forename,
 			String surname,
@@ -28,20 +29,38 @@ public class Swimmer extends Member{
 			String medication,
 			String swimClubName,
 			String level) {
-		super(forename, surname, dateOfBirth, age, gender, status, phoneNumber, email);
+		
+		super(forename, 
+			  surname, 
+			  dateOfBirth, 
+			  age, 
+			  gender, 
+			  status, 
+			  phoneNumber, 
+			  email);
+		
 		this.medicalConditions = medicalConditions;
 		this.medication = medication;
 		this.swimClubName = swimClubName;
 		this.level = level;
+		
+		this.swimmerID = this.generateSwimmerId(
+								this.forename,
+								this.surname,
+								numericId);
 	}
 	
 	
-	public int getSwimmerID() {
-		return swimmerID;
+	public String generateSwimmerId(
+			String swimmerForename, 
+			String swimmerSurname,
+			int numericId) {
+	
+		return 	swimmerForename.substring(0, 3) + 
+				swimmerSurname.substring(0, 3) + 
+				++numericId;
 	}
-	public void setSwimmerID(int swimmerID) {
-		this.swimmerID = swimmerID;
-	}
+	
 
 	public String getMedicalConditions() {
 		return medicalConditions;
@@ -55,7 +74,6 @@ public class Swimmer extends Member{
 	public void setMedication(String medication) {
 		this.medication = medication;
 	}
-	
 	public String getSwimClubName() {
 		return swimClubName;
 	}

@@ -17,6 +17,7 @@ public class Member {
 	public int phoneNumber;
 	public String email;
 	
+	
 	public Member(
 			String forename,
 			String surname,
@@ -38,6 +39,7 @@ public class Member {
 		this.email = email;
 	}
 	
+
 	public String getForename() {
 		return forename;
 	}
