@@ -1,8 +1,6 @@
 package domainObjects;
 
-import java.util.Calendar;
 import java.util.GregorianCalendar;
-
 import enumerations.Gender;
 import enumerations.Status;
 
@@ -15,7 +13,8 @@ public class Swimmer extends Member {
 	private String medication;
 	private String swimClubName;
 	private String level; // MD 24/08/2014 as in: Junior, Senior, Masters -> not needed yet?
-
+	private NextOfKin nextOfKin;
+	
 
 	public Swimmer(
 			String forename,
@@ -28,7 +27,9 @@ public class Swimmer extends Member {
 			String medicalConditions,
 			String medication,
 			String swimClubName,
-			String level) {
+			String level,
+			String nextOfKinName,
+			int nextOfKinPhoneNumber) {
 		
 		super(forename, 
 			  surname, 
@@ -43,16 +44,17 @@ public class Swimmer extends Member {
 		this.swimClubName = swimClubName;
 		this.level = level;
 		
-		this.age = this.calculateAgeTwo(
-					(new GregorianCalendar()).get(Calendar.YEAR), 
-					this.dateOfBirth.YEAR);
+		this.age = this.calculateAge(
+							this.dateOfBirth.YEAR);
 		
 		this.swimmerID = this.generateSwimmerId(
 								this.forename,
 								this.surname,
 								numericId);
 		
-		
+		this.nextOfKin = new NextOfKin(
+								nextOfKinName,
+								nextOfKinPhoneNumber);
 	}
 	
 	
@@ -98,6 +100,5 @@ public class Swimmer extends Member {
 		return "Swimmer [swimmerID=" + swimmerID + ", medicalConditions="
 				+ medicalConditions + ", medication=" + medication
 				+ ", swimClubName=" + swimClubName + ", level=" + level + "]";
-	}
-		
+	}	
 }
