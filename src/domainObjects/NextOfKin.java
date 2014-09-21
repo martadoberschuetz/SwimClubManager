@@ -1,28 +1,14 @@
 package domainObjects;
 
-import java.util.GregorianCalendar;
-
-import enumerations.Gender;
-import enumerations.Status;
-
-public class NextOfKin extends Member {
+public class NextOfKin {
 
 	private String nextOfKinName;
 	private int nextOfKinPhoneNumber;
 	
 	public NextOfKin(
-			String forename,
-			String surname,
-			GregorianCalendar dateOfBirth,
-			int age,
-			Gender gender,
-			Status status,
-			int phoneNumber,
-			String email,
 			String nextOfKinName,
-			int nextOfKinPhoneNumber)
-	{
-		super(forename, surname, dateOfBirth, age, gender, status, phoneNumber, email);
+			int nextOfKinPhoneNumber){
+		
 		this.nextOfKinName = nextOfKinName;
 		this.nextOfKinPhoneNumber = nextOfKinPhoneNumber;
 	}
@@ -45,7 +31,4 @@ public class NextOfKin extends Member {
 		return "NextOfKin [nextOfKinName=" + nextOfKinName
 				+ ", nextOfKinPhoneNumber=" + nextOfKinPhoneNumber + "]";
 	}
-	
-	
-	
 }

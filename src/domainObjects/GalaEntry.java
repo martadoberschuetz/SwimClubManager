@@ -3,24 +3,40 @@ package domainObjects;
 
 public class GalaEntry {
 
-	private static int id;
-	private int entryId;
 	private Swimmer swimmer;
 	private Gala gala;
-	
-	public GalaEntry(){
-		
-		id++;
-		setEntryId(entryId);
-		//new Swimmer();
+	private static int numericId = 0;
+	private String entryId;
 
+	public GalaEntry(Swimmer swimmer, Gala gala){
+		
+		this.swimmer = swimmer;
+		this.gala = gala;
+		
+		this.entryId = generateGalaEntryId(
+							this.swimmer.getForename(), 
+							this.swimmer.getSurname(), 
+							this.gala.getCity(),
+							numericId);
 	}
 	
-	public void setEntryId(int entryId){
-		this.entryId = entryId;
+	private String generateGalaEntryId(
+			String swimmerForename, 
+			String swimmerSurname,
+			String galaCity,
+			int numericId) {
+	
+		return 	swimmerForename.substring(0, 3) + 
+				swimmerSurname.substring(0, 3) + 
+				galaCity.toUpperCase() +
+				numericId++;
 	}
-	public int getEntryId(){
+
+	public String getEntryId() {
 		return entryId;
 	}
-	
+
+	public void setEntryId(String entryId) {
+		this.entryId = entryId;
+	}
 }

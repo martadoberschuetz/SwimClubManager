@@ -1,7 +1,7 @@
 package domainObjects;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
-
 import enumerations.Gender;
 import enumerations.Status;
 
@@ -17,27 +17,53 @@ public class Member {
 	public int phoneNumber;
 	public String email;
 	
+	
 	public Member(
 			String forename,
 			String surname,
 			GregorianCalendar dateOfBirth,
-			int age,
 			Gender gender,
 			Status status,
 			int phoneNumber,
-			String email)
-	{
+			String email) {
+		
 		id++;
 		this.forename = forename;
 		this.surname = surname;
 		this.dateOfBirth = dateOfBirth;
-		this.age = age;
 		this.gender = gender;
 		this.status = status;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
+		
+		this.age = this.calculateAge(
+							this.dateOfBirth.YEAR);
 	}
 	
+	
+	public int calculateAge(int yearInDateOfBirth){
+		
+		return (new GregorianCalendar()).get(Calendar.YEAR) - yearInDateOfBirth;
+	}
+	
+	/*
+	 * to be removed later...
+	 * 
+	public int calculateAgeTwo(int yearToday, int yearInDateOfBirth){
+		
+		return yearToday - yearInDateOfBirth;
+	}
+	
+	
+	public int calculateAge(){
+		  
+		  Calendar calendar = new GregorianCalendar();
+		  this.age = calendar.get(Calendar.YEAR) - this.dateOfBirth.YEAR;
+		  
+		  return this.age;
+	}*/
+	
+
 	public String getForename() {
 		return forename;
 	}
@@ -94,7 +120,4 @@ public class Member {
 				+ gender + ", status=" + status + ", phoneNumber="
 				+ phoneNumber + ", email=" + email + "]";
 	}
-	
-	
-	
 }
