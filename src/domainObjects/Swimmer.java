@@ -1,5 +1,6 @@
 package domainObjects;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import enumerations.Gender;
@@ -20,7 +21,6 @@ public class Swimmer extends Member {
 			String forename,
 			String surname,
 			GregorianCalendar dateOfBirth,
-			int age,
 			Gender gender,
 			Status status,
 			int phoneNumber,
@@ -33,7 +33,6 @@ public class Swimmer extends Member {
 		super(forename, 
 			  surname, 
 			  dateOfBirth, 
-			  age, 
 			  gender, 
 			  status, 
 			  phoneNumber, 
@@ -44,10 +43,16 @@ public class Swimmer extends Member {
 		this.swimClubName = swimClubName;
 		this.level = level;
 		
+		this.age = this.calculateAgeTwo(
+					(new GregorianCalendar()).get(Calendar.YEAR), 
+					this.dateOfBirth.YEAR);
+		
 		this.swimmerID = this.generateSwimmerId(
 								this.forename,
 								this.surname,
 								numericId);
+		
+		
 	}
 	
 	
