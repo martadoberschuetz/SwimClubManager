@@ -16,7 +16,6 @@ public class GenerateSwimmerIdTest{
 				"Michael", 
 				"Phelps",
 				new GregorianCalendar(1985, 06, 30),
-				29,
 				Gender.male,
 				Status.active,
 				66778899,
@@ -24,7 +23,9 @@ public class GenerateSwimmerIdTest{
 				"none",
 				"none",
 				"Baltimore Gators",
-				"Pro");
+				"Pro",
+				"Debra Phelps",
+				600123123);
 	}
 	
 	@Test
