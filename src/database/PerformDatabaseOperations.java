@@ -21,12 +21,12 @@ public class PerformDatabaseOperations {
 
 	static String idEnteredByCustomer;
 	
-	//public PerformDatabaseOperations(){
-	//	dropTableSwimmers();
-	//	createTableSwimmers();
-	//	populateTableSwimmers();
-	//	viewSwimmers();
-	//}
+	public PerformDatabaseOperations(){
+		dropTableSwimmers();
+		createTableSwimmers();
+		populateTableSwimmers();
+		viewSwimmers();
+	}
 	
 	public void dropTableSwimmers(){
 		
@@ -78,15 +78,16 @@ public class PerformDatabaseOperations {
 										"SURNAME TEXT NOT NULL," +
 										"DATE_OF_BIRTH DATE NOT NULL," +
 										"GENDER TEXT NOT NULL,"+
+										"STATUS TEXT NOT NULL,"+
 										"PHONE_NUMBER TEXT NOT NULL,"+
 										"EMAIL TEXT NOT NULL,"+
 										"MEDICAL_CONDITIONS TEXT NOT NULL,"+
 										"MEDICATION TEXT NOT NULL,"+
+										"SWIM_CLUB_NAME TEXT NOT NULL," + 
+										"LEVEL TEXT NOT NULL,"	+ 
 										"NEXT_OF_KIN_NAME TEXT NOT NULL," +
-										"NEXT_OF_KIN_PHONE_NUMBER TEXT NOT NULL," + 
-										"SWIM_CLUB TEXT NOT NULL," + 
-										"STATUS TEXT NOT NULL," +
-										"LEVEL TEXT NOT NULL)";
+										"NEXT_OF_KIN_PHONE_NUMBER TEXT NOT NULL)";
+			
 			
 			scriptStatement.executeUpdate(createTableSwimmers);
 			
@@ -103,8 +104,7 @@ public class PerformDatabaseOperations {
 		
 	}
 		
-	
-	
+		
 	public void populateTableSwimmers(){
 		
 		Connection connection = null;
@@ -119,20 +119,34 @@ public class PerformDatabaseOperations {
 			// populate table Swimmers 
 			scriptStatement = connection.createStatement();
 			
-			String populateTableSwimmers = "INSERT INTO SWIMMERS (FORENAME, SURNAME, DATE_OF_BIRTH, GENDER, PHONE_NUMBER,"
-											+ "EMAIL, MEDICAL_CONDITIONS, MEDICATION, NEXT_OF_KIN_NAME, NEXT_OF_KIN_PHONE_NUMBER,"
-											+ "SWIM_CLUB, STATUS, LEVEL) VALUES "
-											+ "('Michael', 'Phelps', '1984-06-30', 'male', '0909090', "
+			String populateTableSwimmers = "INSERT INTO SWIMMERS (FORENAME, SURNAME, DATE_OF_BIRTH, GENDER, STATUS, PHONE_NUMBER,"
+											+ "EMAIL, MEDICAL_CONDITIONS, MEDICATION, "
+											+ "SWIM_CLUB_NAME, LEVEL, NEXT_OF_KIN_NAME, NEXT_OF_KIN_PHONE_NUMBER) VALUES "
+											+ "('Michael', 'Phelps', '1984-06-30', 'male', 'active', '0909090', "
 											+ "'michael.phelps@gmail.com', 'asthma', 'Seratin inhaler',"
-											+ "'Debbie Phelps', '01819993', 'Baltimore Swimming Club', 'active', 'Masters') ;";
+											+ "'Baltimore Swimming Club', 'Pro', 'Debbie Phelps', '01819993') ;";
 			
-			String populateTableSwimmers2 = "INSERT INTO SWIMMERS (FORENAME, SURNAME, DATE_OF_BIRTH, GENDER, PHONE_NUMBER,"
-											+ "EMAIL, MEDICAL_CONDITIONS, MEDICATION, NEXT_OF_KIN_NAME, NEXT_OF_KIN_PHONE_NUMBER,"
-											+ "SWIM_CLUB, STATUS, LEVEL) VALUES "
-											+ "('Jessica', 'Hardy', '1985-02-21', 'female', '0903229090', "
+			String populateTableSwimmers2 = "INSERT INTO SWIMMERS (FORENAME, SURNAME, DATE_OF_BIRTH, GENDER, STATUS, PHONE_NUMBER,"
+											+ "EMAIL, MEDICAL_CONDITIONS, MEDICATION, "
+											+ "SWIM_CLUB_NAME, LEVEL, NEXT_OF_KIN_NAME, NEXT_OF_KIN_PHONE_NUMBER) VALUES "
+											+ "('Jessica', 'Hardy', '1985-02-21', 'female', 'active', '0903229090', "
 											+ "'jessica.hardy@gmail.com', 'none', 'n/a',"
-											+ "'Dominik Meichtry', '011119993', 'California Swimming Club', 'active', 'Masters') ;";
+											+ "'California Swimming Club', 'Pro', 'Dominik Meichtry', '011119993') ;";
 			
+			/*String forename,
+			String surname,
+			GregorianCalendar dateOfBirth,
+			Gender gender,
+			Status status,
+			int phoneNumber,
+			String email,
+			String medicalConditions,
+			String medication,
+			String swimClubName,
+			String level,
+			String nextOfKinName,
+			int nextOfKinPhoneNumber*/
+		
 			scriptStatement.executeUpdate(populateTableSwimmers);
 			scriptStatement.executeUpdate(populateTableSwimmers2);
 			
@@ -147,72 +161,6 @@ public class PerformDatabaseOperations {
 		System.out.println("Table Swimmers populated.");
 	}
 	
-	
-	public void addSwimmerIntoTableSwimmers(Swimmer swimmer){
-		
-		String forename = swimmer.getForename();
-		String surname = swimmer.getSurname();
-		GregorianCalendar dateOfBirth = swimmer.getDateOfBirth();
-		Gender gender = swimmer.getGender();
-		int phoneNumber = swimmer.getPhoneNumber();
-		String email = swimmer.getEmail();
-		String medicalConditions = swimmer.getMedicalConditions();
-		String medication = swimmer.getMedication();
-		String nextOfKinName = swimmer.getNextOfKinName();
-		int nextOfKinPhoneNumber = swimmer.getNextOfKinPhoneNumber();
-		String swimClub = swimmer.getSwimClubName();
-		Status status = swimmer.getStatus();
-		String level = swimmer.getLevel();
-		
-		Connection connection = null;
-		Statement scriptStatement = null;
-
-		try {
-			// connect to database
-			Class.forName("org.sqlite.JDBC");
-			connection = DriverManager.getConnection("jdbc:sqlite:Swimmers.db");
-			System.out.println("Database opened.");
-
-			// add a new swimmer to the table Swimmers 
-			scriptStatement = connection.createStatement();
-			
-			String addNewSwimmer = "INSERT INTO SWIMMERS (FORENAME, SURNAME, DATE_OF_BIRTH, GENDER, PHONE_NUMBER,"
-											+ "EMAIL, MEDICAL_CONDITIONS, MEDICATION, NEXT_OF_KIN_NAME, NEXT_OF_KIN_PHONE_NUMBER,"
-											+ "SWIM_CLUB, STATUS, LEVEL) VALUES ('"
-											+ forename + "','"
-											+ surname + "','"
-											+ dateOfBirth +  "','"
-											+ gender +  "','"
-											+ phoneNumber +  "','"
-											+ email +  "','"
-											+ medicalConditions +  "','"
-											+ medication +  "','"
-											+ nextOfKinName +  "','"
-											+ nextOfKinPhoneNumber +  "','"
-											+ swimClub +  "','"
-											+ status +  "','"
-											+ level +  "');";
-			
-			scriptStatement.executeUpdate(addNewSwimmer);
-						
-			// close the connection and statement
-			scriptStatement.close();
-			connection.close();
-			
-		} catch (Exception e) {
-			System.out.println(e.getClass().getName() + ": " +e.getMessage() );
-			System.exit(0);
-		}
-		System.out.println("New swimmer added.");
-	}
-	
-	
-	// for testing purposes only:
-	
-	//public static void main(String[] abc){
-		
-	//	new PerformDatabaseOperations();
-	///}
 	
 	public void viewSwimmers(){
 		
@@ -241,7 +189,7 @@ public class PerformDatabaseOperations {
 				String medication = result.getString("MEDICATION");
 				String nextOfKinName = result.getString("NEXT_OF_KIN_NAME");
 				String nextOfKinPhoneNumber = result.getString("NEXT_OF_KIN_PHONE_NUMBER");
-				String swimClub = result.getString("SWIM_CLUB");
+				String swimClub = result.getString("SWIM_CLUB_NAME");
 				String status = result.getString("STATUS");
 				String level = result.getString("LEVEL");
 				
@@ -273,10 +221,9 @@ public class PerformDatabaseOperations {
 				System.out.println("MEDICATION = "+ medication);
 				System.out.println("NEXT_OF_KIN_NAME = "+ nextOfKinName);
 				System.out.println("NEXT_OF_KIN_PHONE_NUMBER = "+ nextOfKinPhoneNumber);
-				System.out.println("SWIM_CLUB = "+ swimClub);
+				System.out.println("SWIM_CLUB_NAME = "+ swimClub);
 				System.out.println("STATUS = "+ status);
 				System.out.println("LEVEL = "+ level);
-				
 			}
 					
 			result.close();
@@ -368,11 +315,11 @@ public class PerformDatabaseOperations {
 		
 	}
 	
-	
+	/*
 	public void updateSwimmerDetails() throws ClassNotFoundException{
 		
 		
-		/*// get text from all the fields in the form
+		// get text from all the fields in the form
 		String forename = AmendSwimmerFrame.forenameTextField.getText();
 		String surname = AmendSwimmerFrame.surnameTextField.getText();
 		Date dateOfBirth = AmendSwimmerFrame.dateOfBirthChosen.getDate();		
@@ -388,7 +335,7 @@ public class PerformDatabaseOperations {
 		String swimClub = AmendSwimmerFrame.swimClubNameComboBox.getSelectedItem().toString();
 		String status = AmendSwimmerFrame.statusComboBox.getSelectedItem().toString();
 		String level = AmendSwimmerFrame.swimmerLevelComboBox.getSelectedItem().toString();
-		*/
+	
 				
 			// create a connection
 			Connection connection = null;
@@ -422,7 +369,7 @@ public class PerformDatabaseOperations {
 												+ "WHERE ID LIKE '" + idEnteredByCustomer + "';";
 			
 						
-						scriptStatement.executeUpdate(updateCustomerDetails);	*/
+						scriptStatement.executeUpdate(updateCustomerDetails);	
 						scriptStatement.close();
 						connection.close();
 						
@@ -470,5 +417,5 @@ public class PerformDatabaseOperations {
 		}
 		System.out.println("Swimmer with id of " + idEnteredByCustomer + " has been deleted.");
 		
-	}
+	}*/
 }

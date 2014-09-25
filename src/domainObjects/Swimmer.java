@@ -14,6 +14,7 @@ public class Swimmer extends Member {
 	private String swimClubName;
 	private String level; // MD 24/08/2014 as in: Junior, Senior, Masters -> not needed yet?
 	private NextOfKin nextOfKin;
+	private int age;
 	
 
 	public Swimmer(
@@ -45,7 +46,7 @@ public class Swimmer extends Member {
 		this.level = level;
 		
 		this.age = this.calculateAge(
-							this.dateOfBirth.YEAR);
+								this.dateOfBirth.YEAR);
 		
 		this.swimmerID = this.generateSwimmerId(
 								this.forename,
@@ -53,15 +54,15 @@ public class Swimmer extends Member {
 								numericId);
 		
 		this.nextOfKin = new NextOfKin(
-								nextOfKinName,
+								nextOfKinName, 
 								nextOfKinPhoneNumber);
 	}
 	
 	
 	public String generateSwimmerId(
-			String swimmerForename, 
-			String swimmerSurname,
-			int numericId) {
+				String swimmerForename, 
+				String swimmerSurname,
+				int numericId) {
 	
 		return 	swimmerForename.substring(0, 3) + 
 				swimmerSurname.substring(0, 3) + 
@@ -92,6 +93,12 @@ public class Swimmer extends Member {
 	}
 	public void setLevel(String level) {
 		this.level = level;
+	}
+	public NextOfKin getNextOfKin() {
+		return nextOfKin;
+	}
+	public void setNextOfKin(NextOfKin nextOfKin) {
+		this.nextOfKin = nextOfKin;
 	}
 
 

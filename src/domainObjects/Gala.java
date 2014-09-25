@@ -2,7 +2,7 @@ package domainObjects;
 
 import java.util.Date;
 
-public abstract class Gala {
+public class Gala {
 
 	private String id;
 	private String name;
@@ -13,9 +13,15 @@ public abstract class Gala {
 	private String organisersName;
 	
 	
-	public Gala(String id, String name, Date date, String city,
-			boolean isNational, int payment, String organisersName) {
-		super();
+	public Gala(
+			String id, 
+			String name, 
+			Date date, 
+			String city,
+			boolean isNational, 
+			int payment, 
+			String organisersName) {
+
 		this.id = id;
 		this.name = name;
 		this.date = date;
@@ -69,6 +75,7 @@ public abstract class Gala {
 		this.organisersName = organisersName;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Gala [id=" + id + ", name=" + name + ", date=" + date
@@ -81,6 +88,4 @@ public abstract class Gala {
 	public int convertTime(int minutes, int seconds, int splitSeconds){
 		return minutes*60 + seconds + splitSeconds/100;
 	}
-	
-	
 }
