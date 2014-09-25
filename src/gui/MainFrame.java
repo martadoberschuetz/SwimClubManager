@@ -31,6 +31,7 @@ public class MainFrame extends JFrame{
 	
 	private Font font;
 	
+	
 	public MainFrame(){
 		createMenu();
 	}
@@ -131,6 +132,7 @@ public class MainFrame extends JFrame{
 		item.addActionListener(saveDataHandler);
 	}
 	
+	
 	class RegisterSwimmerHandler implements ActionListener{
 
 		@Override
@@ -142,7 +144,6 @@ public class MainFrame extends JFrame{
 	}
 	
 	
-	
 	class ViewSwimmersHandler implements ActionListener{
 
 		@Override
@@ -152,6 +153,7 @@ public class MainFrame extends JFrame{
 			viewSwimmers.viewSwimmers();
 		}
 	}
+	
 	
 	class AmendSwimmerHandler implements ActionListener{
 
@@ -165,15 +167,17 @@ public class MainFrame extends JFrame{
 		}
 	}
 	
+	
 	class DeactivateSwimmerHandler implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
-			PerformDatabaseOperations deactivateSwimmer = new PerformDatabaseOperations();
-			deactivateSwimmer.deleteSwimmerFromDatabase();
+			//PerformDatabaseOperations deactivateSwimmer = new PerformDatabaseOperations();
+			//deactivateSwimmer.deleteSwimmerFromDatabase();
 		}
 	}
+	
 	
 	class RegisterGalaHandler implements ActionListener{
 
@@ -185,6 +189,7 @@ public class MainFrame extends JFrame{
 		}
 	}
 	
+	
 	class AmendGalaHandler implements ActionListener{
 
 		@Override
@@ -192,6 +197,7 @@ public class MainFrame extends JFrame{
 	
 		}
 	}
+	
 	
 	class CancelGalaHandler implements ActionListener{
 
@@ -278,6 +284,7 @@ public class MainFrame extends JFrame{
 		
 	}
 	
+	
 	class ViewGalaHandler implements ActionListener{
 		
 		@Override
@@ -298,6 +305,7 @@ public class MainFrame extends JFrame{
 		}
 	}
 	
+	
 	class ViewQualifyingSwimmersHandler implements ActionListener{
 		
 		@Override
@@ -307,6 +315,7 @@ public class MainFrame extends JFrame{
 		}
 	}
 	
+	
 	class DoIQualifyHandler implements ActionListener{
 		
 		@Override
@@ -314,6 +323,7 @@ public class MainFrame extends JFrame{
 			
 		}
 	}
+	
 	
 	class EnterAGalaHandler implements ActionListener{
 		
@@ -323,6 +333,7 @@ public class MainFrame extends JFrame{
 		}
 	}
 	
+	
 	class LoadDataHandler implements ActionListener{
 		
 		@Override
@@ -330,6 +341,7 @@ public class MainFrame extends JFrame{
 			
 		}
 	}
+	
 	
 	class SaveDataHandler implements ActionListener{
 		

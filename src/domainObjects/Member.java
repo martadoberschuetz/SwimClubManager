@@ -1,12 +1,15 @@
 package domainObjects;
 
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import enumerations.Gender;
 import enumerations.Status;
 
-public class Member {
 
+public abstract class Member {
+
+	
 	private static int id = 0;
 	public String forename;
 	public String surname;
@@ -113,6 +116,7 @@ public class Member {
 		this.email = email;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Member [forename=" + forename + ", surname=" + surname

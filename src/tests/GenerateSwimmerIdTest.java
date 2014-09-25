@@ -1,17 +1,20 @@
 package tests;
+
 import java.util.GregorianCalendar;
-
 import org.junit.*;
-
 import enumerations.Gender;
 import enumerations.Status;
 
+
 public class GenerateSwimmerIdTest{
 
+	
 	private domainObjects.Swimmer swimmer;
 
+	
 	@Before
 	public void setUp(){
+		
 		swimmer = new domainObjects.Swimmer(
 				"Michael", 
 				"Phelps",
@@ -28,6 +31,7 @@ public class GenerateSwimmerIdTest{
 				600123123);
 	}
 	
+	
 	@Test
 	public void test_generateSwimmerId_OK(){
 		//given
@@ -39,6 +43,7 @@ public class GenerateSwimmerIdTest{
 		//then
 		Assert.assertEquals("MicPhe1", result);
 	}
+	
 	
 	@Test(expected=IndexOutOfBoundsException.class)
 	public void test_generateSwimmerId_Forename_Empty_String(){
