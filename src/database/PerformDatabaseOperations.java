@@ -133,6 +133,27 @@ public class PerformDatabaseOperations {
 											+ "'jessica.hardy@gmail.com', 'none', 'n/a',"
 											+ "'California Swimming Club', 'Pro', 'Dominik Meichtry', '011119993') ;";
 			
+			String populateTableSwimmers3 = "INSERT INTO SWIMMERS (FORENAME, SURNAME, DATE_OF_BIRTH, GENDER, STATUS, PHONE_NUMBER,"
+											+ "EMAIL, MEDICAL_CONDITIONS, MEDICATION, "
+											+ "SWIM_CLUB_NAME, LEVEL, NEXT_OF_KIN_NAME, NEXT_OF_KIN_PHONE_NUMBER) VALUES "
+											+ "('Otylia', 'Jêdrzejczak', '1983-12-13', 'female', 'active', '600123123', "
+											+ "'j.jedrzejczak@gmail.com', 'none', 'n/a',"
+											+ "'Ruda Œl¹ska', 'Pro', 'Pawe³ S³omiñski', '601987123') ;";
+
+			String populateTableSwimmers4 = "INSERT INTO SWIMMERS (FORENAME, SURNAME, DATE_OF_BIRTH, GENDER, STATUS, PHONE_NUMBER,"
+											+ "EMAIL, MEDICAL_CONDITIONS, MEDICATION, "
+											+ "SWIM_CLUB_NAME, LEVEL, NEXT_OF_KIN_NAME, NEXT_OF_KIN_PHONE_NUMBER) VALUES "
+											+ "('Marta', 'Doberschuetz', '1983-12-21', 'female', 'active', '600123123', "
+											+ "'marta@marta.ie', 'none', 'n/a',"
+											+ "'Poznañ', 'Pro-Ama', 'null', '353877260959') ;";
+
+			String populateTableSwimmers5 = "INSERT INTO SWIMMERS (FORENAME, SURNAME, DATE_OF_BIRTH, GENDER, STATUS, PHONE_NUMBER,"
+											+ "EMAIL, MEDICAL_CONDITIONS, MEDICATION, "
+											+ "SWIM_CLUB_NAME, LEVEL, NEXT_OF_KIN_NAME, NEXT_OF_KIN_PHONE_NUMBER) VALUES "
+											+ "('Pawe³', 'Korzeniowski', '1988-01-13', 'male', 'inactive', '600555123', "
+											+ "'p.korzeniowskik@gmail.com', 'none', 'n/a',"
+											+ "'Warszawa', 'Pro', 'n/a', 'n/a') ;";
+
 			/*String forename,
 			String surname,
 			GregorianCalendar dateOfBirth,
@@ -149,6 +170,9 @@ public class PerformDatabaseOperations {
 		
 			scriptStatement.executeUpdate(populateTableSwimmers);
 			scriptStatement.executeUpdate(populateTableSwimmers2);
+			scriptStatement.executeUpdate(populateTableSwimmers3);
+			scriptStatement.executeUpdate(populateTableSwimmers4);
+			scriptStatement.executeUpdate(populateTableSwimmers5);
 			
 			// close the connection and statement
 			scriptStatement.close();

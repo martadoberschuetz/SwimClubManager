@@ -2,8 +2,10 @@ package tests;
 
 
 import org.junit.*;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
 import enumerations.Gender;
 import enumerations.Status;
 
@@ -44,6 +46,30 @@ public class CalculateAgeTest {
 		 int result = swimmer.calculateAge(yearInDateOfBirth);
 	   
 		 //then
-		 Assert.assertEquals(19, result);
+		 Assert.assertEquals(29, result);
 	 }
+	 
+	 @Test
+	 public void test_calculateAge_dateOfBirthempty() {
+		 
+		 //given
+		 Assert.assertTrue("", swimmer.dateOfBirth.get(Calendar.YEAR) < (new GregorianCalendar()).get(Calendar.YEAR));
+		
+	 }
+	 
+	@Test(expected=AssertionError.class)
+	 public void test_calculateAge_objectNotNull() {
+		 
+		 Assert.assertNull(swimmer);
+		 
+	 }
+	
+	@Test(expected=AssertionError.class)
+	 public void test_calculateAge_assertFalse() {
+		 
+		 Assert.assertFalse("Message", swimmer.dateOfBirth.get(Calendar.YEAR) < (new GregorianCalendar()).get(Calendar.YEAR));
+		 
+	 }
+	
+	 
 }
